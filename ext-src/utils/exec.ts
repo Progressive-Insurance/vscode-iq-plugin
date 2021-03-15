@@ -17,7 +17,7 @@ import * as cp from 'child_process';
 import * as process from 'process';
 
 export function exec(command: string, options: cp.ExecOptions): Promise<{ stdout: string; stderr: string }> {
-	options.env = { ...options.env, ...process.env }
+	options.env = { ...process.env, ...options.env }
 
 	return new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
 		cp.exec(command, options, (error, stdout, stderr) => {
